@@ -1,0 +1,138 @@
+.email-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .popup-content {
+    background: #fff;
+    color: #000;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: scaleUp 0.5s ease-in-out;
+  }
+  
+  .popup-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff8a00;
+  }
+  
+  .popup-content p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .popup-content input {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    width: calc(100% - 24px);
+  }
+  
+  .popup-content button {
+    background-color: #ff8a00;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .popup-content button:hover {
+    background-color: #ff7a00;
+    transform: scale(1.05);
+  }
+  
+  .popup-content .cancel-button {
+    background-color: #ccc;
+  }
+  
+  .popup-content .cancel-button:hover {
+    background-color: #bbb;
+  }
+  
+  @media (max-width: 768px) {
+    .popup-content {
+      padding: 20px;
+    }
+  
+    .popup-content h2 {
+      font-size: 1.5rem;
+    }
+  
+    .popup-content p {
+      font-size: 1rem;
+    }
+  
+    .popup-content input {
+      font-size: 0.9rem;
+    }
+  
+    .popup-content button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .popup-content {
+      padding: 15px;
+    }
+  
+    .popup-content h2 {
+      font-size: 1.2rem;
+    }
+  
+    .popup-content p {
+      font-size: 0.9rem;
+    }
+  
+    .popup-content input {
+      font-size: 0.8rem;
+    }
+  
+    .popup-content button {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleUp {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

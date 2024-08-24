@@ -1,0 +1,31 @@
+/* src/styles/BuyButton.css */
+.buy-button {
+    background-color: #ff8a00;
+    border: none;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+  }
+  
+  .buy-button:hover {
+    background-color: #ff7a00;
+  }
+  
+  @media (max-width: 768px) {
+    .buy-button {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .buy-button {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
+  
