@@ -5,33 +5,64 @@ import PrivacyPolicyPopup from './PrivacyPolicyPopup';
 import TermsAndConditionsPopup from './TermsAndConditionsPopup';
 import '../styles/LandingPage.css';
 import generateUniqueTestimonials from '../utils/generateUniqueTestimonials';
+import ReturnPolicyPopup from './ReturnPolicyPopup';
+import CoursePopup from './CoursePopup';
 
 // Testimonial data
 const testimonials = generateUniqueTestimonials(50);
 
 const courses = [
-  { title: 'LinkedIn Marketing', image: '/images/linkedin-marketing.jpg' },
-  { title: 'Affiliate Marketing', image: '/images/affiliate-marketing.jpg' },
-  { title: 'Amazon FBA', image: '/images/amazon-fba.jpg' },
-  { title: 'Copywriting Skills', image: '/images/copywriting-skills.jpg' },
-  { title: 'Cryptocurrency', image: '/images/cryptocurrency.jpg' },
-  { title: 'Dropshipping', image: '/images/dropshipping.jpg' },
-  { title: 'eCommerce Strategies', image: '/images/ecommerce-strategies.jpg' },
-  { title: 'eBooks and More', image: '/images/ebooks.jpg' },
-  { title: 'Email Marketing', image: '/images/email-marketing.jpg' },
-  { title: 'Facebook Advertising', image: '/images/facebook-advertising.jpg' },
-  // Add more courses with their respective images
+  { title: 'LinkedIn Marketing', image: '/images/linkedin-marketing.jpg', details: ['LinkedIn Introduction', 'Profile Optimization', 'LinkedIn Groups & Events', 'How to Download LinkedIn Connections', 'Your LinkedIn Presence', 'Craft an Offer', 'Establish Your Goals', 'Build Network', 'First 500 Connections', 'Profile Quick Tip', 'AFR (Taking Permission)', 'Retargeting - Profile Views', 'LM Content Retargeting', 'LinkedIn Lead Generation'] },
+  { title: 'Affiliate Marketing', image: '/images/affiliate-marketing.jpg', details: ['Introduction to Affiliate Marketing', 'Choosing the Right Affiliate Programs', 'Building an Affiliate Website', 'Traffic Generation Techniques', 'Converting Traffic into Sales', 'Tracking and Analytics', 'Scaling Your Affiliate Business'] },
+  { title: 'Amazon FBA', image: '/images/amazon-fba.jpg', details: ['Amazon FBA Overview', 'Product Research', 'Sourcing and Suppliers', 'Listing Optimization', 'Marketing and Promotions', 'Managing Inventory', 'Analyzing Performance'] },
+  { title: 'Copywriting Skills', image: '/images/copywriting-skills.jpg', details: ['Understanding Copywriting', 'Crafting Compelling Headlines', 'Writing Persuasive Content', 'Using Emotional Triggers', 'Call-to-Action Strategies', 'Editing and Proofreading', 'A/B Testing'] },
+  { title: 'Cryptocurrency', image: '/images/cryptocurrency.jpg', details: ['Introduction to Cryptocurrency', 'How Cryptocurrencies Work', 'Buying and Selling Cryptocurrencies', 'Trading Strategies', 'Security and Wallets', 'Mining and Staking', 'Regulations and Taxation'] },
+  { title: 'Dropshipping', image: '/images/dropshipping.jpg', details: ['Dropshipping Basics', 'Finding Suppliers', 'Setting Up Your Store', 'Product Listings and Pricing', 'Marketing Strategies', 'Order Fulfillment', 'Customer Service'] },
+  { title: 'eCommerce Strategies', image: '/images/ecommerce-strategies.jpg', details: ['Building an eCommerce Store', 'Product Selection', 'Website Optimization', 'Digital Marketing Techniques', 'Customer Retention', 'Sales Analytics', 'Scaling Your Store'] },
+  { title: 'eBooks and More', image: '/images/ebooks.jpg', details: ['Creating eBooks', 'Publishing Platforms', 'Marketing Your eBook', 'Monetization Strategies', 'Building an Author Platform', 'eBook Design and Formatting', 'Distribution Channels'] },
+  { title: 'Email Marketing', image: '/images/email-marketing.jpg', details: ['Email Marketing Basics', 'Building an Email List', 'Crafting Effective Campaigns', 'Segmentation and Personalization', 'Automation Strategies', 'A/B Testing Emails', 'Analytics and Reporting'] },
+  { title: 'Facebook Advertising', image: '/images/facebook-advertising.jpg', details: ['Creating Facebook Ads', 'Targeting Your Audience', 'Ad Formats and Placement', 'Budgeting and Bidding', 'Ad Performance Metrics', 'Retargeting Strategies', 'Campaign Optimization'] },
+  { title: 'Funnel Building', image: '/images/funnel-building.jpg', details: ['Understanding Sales Funnels', 'Creating Effective Funnels', 'Funnel Stages and Strategies', 'Optimizing Funnel Performance', 'A/B Testing Funnels', 'Funnels for Different Business Models', 'Using Funnel Tools'] },
+  { title: 'Google AdWords', image: '/images/google-adwords.jpg', details: ['Google Ads Overview', 'Keyword Research', 'Creating Campaigns', 'Ad Copy and Design', 'Bid Strategies', 'Performance Tracking', 'Ad Extensions'] },
+  { title: 'Instagram Marketing', image: '/images/instagram-marketing.jpg', details: ['Instagram Basics', 'Building a Strong Profile', 'Creating Engaging Content', 'Hashtag Strategies', 'Influencer Collaborations', 'Instagram Ads', 'Analyzing Performance'] },
+  { title: 'Lifestyle & Self Exploration', image: '/images/lifestyle-self-exploration.jpg', details: ['Self-Discovery Techniques', 'Setting Personal Goals', 'Mindfulness and Wellness', 'Building Confidence', 'Exploring New Hobbies', 'Creating a Balanced Life', 'Continuous Self-Improvement'] },
+  { title: 'Messenger Bot Building', image: '/images/messenger-bot-building.jpg', details: ['Introduction to Messenger Bots', 'Building Your First Bot', 'Bot Design and Flow', 'Integrating with Facebook', 'Automating Responses', 'Tracking and Analytics', 'Advanced Bot Features'] },
+  { title: 'Personal Brand Building', image: '/images/personal-brand-building.jpg', details: ['Understanding Personal Branding', 'Building Your Online Presence', 'Creating Valuable Content', 'Networking Strategies', 'Leveraging Social Media', 'Brand Messaging', 'Brand Consistency'] },
+  { title: 'SEO Courses', image: '/images/seo-courses.jpg', details: ['SEO Fundamentals', 'Keyword Research Techniques', 'On-Page Optimization', 'Technical SEO', 'Link Building Strategies', 'SEO Tools and Analytics', 'Local SEO'] },
+  { title: 'Social Media Marketing', image: '/images/social-media-marketing.jpg', details: ['Overview of Social Media Platforms', 'Creating Social Media Strategies', 'Content Planning and Creation', 'Social Media Advertising', 'Engagement and Interaction', 'Analyzing Social Media Performance', 'Managing Social Media Accounts'] },
+  { title: 'Blogging Course in Hindi', image: '/images/blogging-course-hindi.jpg', details: ['Blogging Basics', 'Content Creation and Strategy', 'SEO for Blogs', 'Monetizing Your Blog', 'Promoting Your Blog', 'Building an Audience', 'Blog Maintenance'] },
+  { title: 'Grow Your Blog Fast', image: '/images/grow-your-blog-fast.jpg', details: ['Fast Blog Growth Strategies', 'Content Planning', 'SEO Techniques', 'Promotional Tactics', 'Building Backlinks', 'Engaging with Your Audience', 'Analyzing Growth'] },
+  { title: 'SEO That Works 3.0', image: '/images/seo-that-works-3-0.jpg', details: ['Advanced SEO Techniques', 'Keyword Research and Optimization', 'On-Page and Off-Page SEO', 'Technical SEO', 'Local and Global SEO', 'SEO Tools and Analytics', 'Continuous Improvement'] },
+  { title: 'Zapier Mastery', image: '/images/zapier-mastery.jpg', details: ['Introduction to Zapier', 'Creating Automated Workflows', 'Connecting Apps and Services', 'Advanced Zapier Features', 'Troubleshooting Zaps', 'Optimizing Automation', 'Use Cases and Examples'] },
+  { title: 'Sales Funnel That Works', image: '/images/sales-funnel-that-works.jpg', details: ['Sales Funnel Design', 'Lead Generation Strategies', 'Nurturing Leads', 'Conversion Optimization', 'Analyzing Funnel Performance', 'Scaling Funnels', 'Case Studies'] },
+  { title: 'Graphic Design', image: '/images/graphic-design.jpg', details: ['Graphic Design Basics', 'Design Principles', 'Using Design Software', 'Creating Visual Content', 'Typography and Color Theory', 'Designing for Different Media', 'Building a Portfolio'] },
+  { title: 'Words That Sell', image: '/images/words-that-sell.jpg', details: ['Copywriting Essentials', 'Crafting Persuasive Copy', 'Using Emotional Triggers', 'Call-to-Action Techniques', 'Editing and Proofreading', 'A/B Testing Copy', 'Creating Engaging Headlines'] },
+  { title: 'Millionaire Blogging Guide', image: '/images/millionaire-blogging-guide.jpg', details: ['Building a Million-Dollar Blog', 'Content Creation Strategies', 'Monetization Techniques', 'Marketing and Promotion', 'Audience Building', 'Scaling Your Blog', 'Success Stories'] },
+  { title: 'Udemy SEO 2020 Complete SEO Training', image: '/images/udemy-seo-2020.jpg', details: ['Comprehensive SEO Training', 'Keyword Research', 'On-Page and Off-Page SEO', 'Technical SEO', 'SEO Tools and Analytics', 'Case Studies', 'SEO Trends and Updates'] },
+  { title: 'SEO for WordPress Websites 2020', image: '/images/seo-for-wordpress-websites-2020.jpg', details: ['SEO for WordPress', 'Setting Up SEO Plugins', 'On-Page Optimization', 'Content Creation', 'Technical SEO for WordPress', 'Building Backlinks', 'Tracking Performance'] },
+  { title: 'CA Rachna Ranade Bonus Course', image: '/images/ca-rachn-ranade-bonus.jpg', details: ['Bonus Content from CA Rachna Ranade', 'Advanced Financial Topics', 'Investing Strategies', 'Tax Planning', 'Wealth Management', 'Financial Independence', 'Practical Exercises'] }
 ];
+
 
 const LandingPage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showReturnPolicy, setShowReturnPolicy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [timerHours, setTimerHours] = useState(0);
   const [timerMinutes, setTimerMinutes] = useState(0);
   const [timerSeconds, setTimerSeconds] = useState(0);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isSliderVisible, setIsSliderVisible] = useState(false);
+  const [showCoursePopup, setShowCoursePopup] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleCourseClick = (course) => {
+    setSelectedCourse(course);
+    setShowCoursePopup(true);
+  };
+
+  const handleCloseCoursePopup = () => setShowCoursePopup(false);
 
   useEffect(() => {
     const calculateTimeRemaining = () => {
@@ -109,17 +140,25 @@ const LandingPage = () => {
         <BuyButton onClick={() => setShowPopup(true)} />
       </section>
 
-      <section className="courses">
-        <h2>What You'll Get:</h2>
-        <div className="course-grid">
-          {courses.map((course, index) => (
-            <div className="course-card" key={index}>
-              <img src={course.image} alt={course.title} className="course-image" />
-              <h3 className="course-title">{course.title}</h3>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section className="courses-section">
+  <h2>What you will get </h2>
+  <div className="course-grid">
+    {courses.map((course, index) => (
+      <div
+        key={index}
+        className={`course-card ${course.title === 'CA Rachna Ranade Bonus Course' ? 'bonus-course' : ''}`}
+        onClick={() => handleCourseClick(course)}
+      >
+        {course.title === 'CA Rachna Ranade Bonus Course' && (
+          <div className="bonus-tag">BONUS</div>
+        )}
+        {/* <img src={course.image} alt={course.title} className="course-image" /> */}
+        <h3>{course.title}</h3>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       <section className="final-call-to-action">
         <h2>🌟 Don’t Let This Opportunity Slip Away! 🌟</h2>
@@ -135,14 +174,27 @@ const LandingPage = () => {
       </section>
 
       <footer className="footer">
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
-        <p><a href="#privacy" onClick={() => setShowPrivacyPolicy(true)}>Privacy Policy</a> | <a href="#terms" onClick={() => setShowTerms(true)}>Terms and Conditions</a></p>
+        <p>&copy; 2024 Marketing Bundle. All rights reserved.</p>
+        <p><a href="#privacy" onClick={() => setShowPrivacyPolicy(true)}>Privacy Policy</a> 
+        | <a href="#terms" onClick={() => setShowTerms(true)}>Terms and Conditions</a>
+        | <a href="#return-policy" onClick={() => setShowReturnPolicy(true)}>Return Policy</a>
+
+        </p>
+
         <p>Support: <a href="mailto:marketingbundle8@gmail.com">marketingbundle8@gmail.com</a></p>
       </footer>
 
       {showPopup && <EmailPopup onClose={() => setShowPopup(false)} />}
       {showPrivacyPolicy && <PrivacyPolicyPopup onClose={() => setShowPrivacyPolicy(false)} />}
       {showTerms && <TermsAndConditionsPopup onClose={() => setShowTerms(false)} />}
+      {showReturnPolicy && <ReturnPolicyPopup onClose={() => setShowReturnPolicy(false)} />} 
+      {showCoursePopup && selectedCourse && (
+        <CoursePopup
+          isOpen={showCoursePopup}
+          onClose={handleCloseCoursePopup}
+          course={selectedCourse}
+        />
+      )}
 
       {/* Testimonial Slider */}
       <div className={`testimonial-slider ${isSliderVisible ? 'visible' : ''}`}>
